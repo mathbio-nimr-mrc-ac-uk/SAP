@@ -1,0 +1,28 @@
+================================================================================
+ChangeLog of program SAP
+(C) 2008-2010 Jens Kleinjung
+================================================================================
+
+- 1.1.1
+Thu Feb  4 13:52:13 GMT 2010
+	Commented out misplaced secondary structure output line ('ss = ')
+
+- 1.1.0
+Wed Jul 15 16:45:05 BST 2009
+	Compilation with GNU build tools.
+
+- 1.0.2
+Thu Nov 27 13:53:35 GMT 2008
+	Correction of prototype definitions in header files.
+
+Thu Nov 27 12:25:51 GMT 2008 : Siv Hollup :
+	Clean-up of code to make it ANSI C compliant.
+
+- 1.0.1
+Fri Nov  7 17:59:47 GMT 2008
+	Matrix initialisation to fix bug occurring with protein structures
+	2A4MC.pdb and 2J5BB.pdb .
+
+- 1.0.0
+06.2008 : release of SAP (http://mathbio.nimr.mrc.ac.uk/wiki/Software)
+

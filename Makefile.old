@@ -1,0 +1,52 @@
+#===============================================================================
+# $Id: Makefile 12 2008-11-28 11:56:04Z jkleinj $
+# SAP Makefile
+# make all: compile entire distribution
+# make clean: remove executables
+# (C) 2008 Jens Kleinjung
+#===============================================================================
+
+#______________________________________________________________________________
+# MACROS
+# compilers / flags
+CC		= gcc
+#CFLAGS  = -ggdb -Wall -pedantic # development
+CFLAGS  = -O2 -Wall -MMD # production
+
+# compiled libraries
+LDLIBS	= -lm
+
+# subdirectories
+UAAD    = util/aa
+UWTD    = util/wt
+SUBDIRS = $(UAAD) $(UWTD)
+
+# program and source-code names
+PROGRAM = sap
+SRCS	= sap.c $(UAAD)/bestrot.c $(UAAD)/cones.c $(UAAD)/matrix.c \
+			$(UAAD)/pdbprot.c $(UAAD)/ql.c $(UAAD)/siva.c $(UAAD)/stutest.c \
+            $(UWTD)/geom.c $(UWTD)/sort.c $(UWTD)/util.c
+
+# dependencies
+DEPS 	= $(SRCS:%.c=%.d)
+OBJS 	= $(SRCS:%.c=%.o)
+
+#______________________________________________________________________________
+# TARGETS
+all : ${PROGRAM}
+	ctags -R
+
+clean :
+	rm *.o *.d ${PROGRAM}
+	for i in $(SUBDIRS); do\
+		(cd $$i; rm *.o *.d);\
+	done
+
+# compile source
+${SRCS} : $($@)
+	${CC} ${CFLAGS} -c $<
+
+# link objects
+$(PROGRAM) : ${OBJS}
+	${CC} ${CFLAGS} -o $@ ${OBJS} ${LDLIBS}
+

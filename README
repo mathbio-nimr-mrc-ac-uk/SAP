@@ -1,0 +1,125 @@
+===============================================================================
+$Id: README 12 2008-11-28 11:56:04Z jkleinj $
+README: Basic information about SAP 
+SAP : Pairwise structure alignment using Dynamic Programming
+(C) 1999 Willie Taylor
+SAP is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Read the LICENSE file for distribution details.
+
+    This program is free software; you can redistribute it and/or modify                                                                 
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+===============================================================================
+
+README for SAP
+================
+
+Purpose
+-------
+Pairwise (protein) structure alignment.
+
+
+Installation / Compilation
+--------------------------
+% tar -zxvf <program>.tgz   # extract program
+% cd <program>
+% make all                  # compile program
+(the message 'missing .d files' at first compilation is normal and can be ignored)
+
+In case something goes wrong:
+% make clean                # remove program and binaries
+
+
+Usage
+-----
+	sap <PDB_1> <PDB_2>
+
+
+Code Files
+----------
+sap.c sap.h
+util/
+	aa/
+		bestrot.c
+		cones.c
+		matrix.c
+		pdbprot.c
+		ql.c
+		siva.c
+		stutest.c
+		incl/
+			bestrot.h
+			cones.h
+			galloc.h
+			matrix.h
+			pdbprot.h
+			ql.h
+			siva.h
+			student.h
+	wt/
+		geom.c
+		sort.c
+		util.c
+		incl/
+			geom.h
+			sort.h
+			util.h
+
+
+Availability
+------------
+The program is made available under the GNU Public License for academic
+scientific purposes, under the condition that proper acknowledgement 
+is made to the authors of the program in publications resulting from the use 
+of the program.
+
+
+Server
+------
+SAP: http://mathbio.nimr.mrc.ac.uk/wiki/SAP
+
+
+References
+----------
+Users publishing results obtained with the program and its applications
+should acknowledge its use by the following citation:
+
+- Taylor W.R., Protein structure comparison using iterated double 
+	dynamic programming. Protein Sci. 8 (1999) 654-665.
+
+- Taylor W.R., Protein structure comparison using SAP. 
+	Methods Mol. Biol. 143 (2000) 19-32.
+
+Contact
+-------
+	Dr. W.R. Taylor
+	http://mathbio.nimr.mrc.ac.uk/wiki/Willie_taylor
+	Division of Mathematical Biology
+	National Institute for Medical Research
+	The Rigdgeway, Mill Hill
+	NW7 1AA London
+	email: wtaylor@nimr.mrc.ac.uk
+
+
+Copyright and Authors
+---------------------
+(C) 1999 W.R. Taylor
+
+
+Contributions
+-------------
+(C) 2007 Alessandro Pandini : SAP web server
+(C) 2007 Jens Kleinjung : code release
+(C) 2008 Siv Hollup : code update to ANSI C standard
+
