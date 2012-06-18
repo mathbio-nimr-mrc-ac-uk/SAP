@@ -1,7 +1,11 @@
 ================================================================================
 ChangeLog of program SAP
-(C) 2008-2010 Jens Kleinjung
+(C) 2008-2012 Jens Kleinjung
 ================================================================================
+
+- 1.1.2
+Mon Jun 18 18:17:44 BST 2012
+	Removed obsolete 'malloc.h' include. Using 'stdlib.h' instead.
 
 - 1.1.1
 Thu Feb  4 13:52:13 GMT 2010

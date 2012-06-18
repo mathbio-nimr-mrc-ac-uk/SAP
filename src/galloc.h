@@ -9,7 +9,7 @@
 
 /* ---- STANDARD HEADERS ---- */
 
-#include <malloc.h>
+#include <stdlib.h>
 
 /* ---- MACROS ---- */
 

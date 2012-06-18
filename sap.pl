@@ -53,7 +53,7 @@ foreach $par (@pars)
 # run pdbEncode application
 
 # compose command string
-$command_string = "$phpdir/binary/sap";
+$command_string = "ulimit -s unlimited; $phpdir/binary/sap";
 
 if ($pdbin1 ne ""){
     $command_string .= " $pdbin1";
