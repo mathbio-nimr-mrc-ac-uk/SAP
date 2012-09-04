@@ -1,11 +1,6 @@
 
-SAP : Pairwise structure alignment using Dynamic Programming
-------------------------------------------------------------
-
-Purpose
--------
-Pairwise (protein) structure alignment.
-
+SAP : Pairwise structure alignment using double dynamic programming
+-------------------------------------------------------------------
 
 References
 ----------
@@ -19,67 +14,25 @@ should acknowledge its use by the following citation:
 	Methods Mol. Biol. 143 (2000) 19-32.
 
 
-Installation / Compilation
---------------------------
-% tar -zxvf <program>.tgz   # extract program
-% cd <program>
-% make all                  # compile program
-(the message 'missing .d files' at first compilation is normal and can be ignored)
-
-In case something goes wrong:
-% make clean                # remove program and binaries
+Install / Uninstall
+-------------------
+Please read the general 'INSTALL' instructions.
 
 
 Usage
 -----
 	sap <PDB_1> <PDB_2>
 
+	sap <PDB_1> <PDB_2> <one2one>
+<one2one> is an optional integer value added to the diagonal;
+any negative value selects the default value of 1000.
+
 Large proteins might cause a segmentation fault due to stack overflow.
 Execute 'unlimit stacksize' (or 'ulimit -s unlimited') as a separate
 command before the 'sap' command to avoid stack overflow:
+
 	unlimit stacksize; sap <PDB_1> <PDB_2>
 
-
-Code Files
-----------
-sap.c sap.h
-util/
-	aa/
-		bestrot.c
-		cones.c
-		matrix.c
-		pdbprot.c
-		ql.c
-		siva.c
-		stutest.c
-		incl/
-			bestrot.h
-			cones.h
-			galloc.h
-			matrix.h
-			pdbprot.h
-			ql.h
-			siva.h
-			student.h
-	wt/
-		geom.c
-		sort.c
-		util.c
-		incl/
-			geom.h
-			sort.h
-			util.h
-
-
-Contact
--------
-	Dr. W.R. Taylor
-	http://mathbio.nimr.mrc.ac.uk/wiki/Willie_taylor
-	Division of Mathematical Biology
-	National Institute for Medical Research
-	The Rigdgeway, Mill Hill
-	NW7 1AA London
-	email: wtaylor@nimr.mrc.ac.uk
 
 Server
 -------
