@@ -34,6 +34,11 @@ Usage
 -----
 	sap <PDB_1> <PDB_2>
 
+Large proteins might cause a segmentation fault due to stack overflow.
+Execute 'unlimit stacksize' (or 'ulimit -s unlimited') as a separate
+command before the 'sap' command to avoid stack overflow:
+	unlimit stacksize; sap <PDB_1> <PDB_2>
+
 
 Code Files
 ----------

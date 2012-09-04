@@ -1,6 +1,6 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
-AC_INIT(sap, 1.1.1, jkleinj@nimr.mrc.ac.uk)
+AC_INIT(sap, 1.1.3, jkleinj@gmail.com)
 
 AC_PREREQ([2.63])
 AC_CONFIG_SRCDIR([src/sap.c])

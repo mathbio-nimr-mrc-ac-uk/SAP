@@ -4,7 +4,6 @@ SAP : Pairwise protein structure alignment via double dynamic programming
 (C) 1999 W.R. Taylor
 =============================================================================*/
 
-#include <alloca.h>
 #include <assert.h>
 #include <string.h>
 
@@ -200,20 +199,20 @@ int	cycles, print;
     Pairs *sel;
     lena = seqa->len;
     lenb = seqb->len;
-    sel = (Pairs *) alloca(sizeof(Pairs) * lena * lenb);
+    sel = (Pairs *) malloc(sizeof(Pairs) * lena * lenb);
     assert(sel);
-    sec = (float **) alloca(sizeof(float *) * (lenb + 2));
+    sec = (float **) malloc(sizeof(float *) * (lenb + 2));
     assert(sec);
-    sim = (float **) alloca(sizeof(float *) * (lenb + 2));
+    sim = (float **) malloc(sizeof(float *) * (lenb + 2));
     assert(sim);
-    bias = (float **) alloca(sizeof(float *) * (lenb + 2));
+    bias = (float **) malloc(sizeof(float *) * (lenb + 2));
     assert(bias);
     for (i = 0; i < lenb + 2; i++) {
-	sim[i] = (float *) alloca(sizeof(float) * (lena + 2));
+	sim[i] = (float *) malloc(sizeof(float) * (lena + 2));
 	assert(sim[i]);
-	sec[i] = (float *) alloca(sizeof(float) * (lena + 2));
+	sec[i] = (float *) malloc(sizeof(float) * (lena + 2));
 	assert(sec[i]);
-	bias[i] = (float *) alloca(sizeof(float) * (lena + 2));
+	bias[i] = (float *) malloc(sizeof(float) * (lena + 2));
 	assert(bias[i]);
 	for (j = 0; j < lena + 2; j++)
 	    bias[i][j] = 0.0;
@@ -315,11 +314,11 @@ int	*nsel, print;
     lenb = seqb->len;
     if (*nsel)
 	score_pair(cyc_no, bias, sel, sim, a, b, lena, lenb, *nsel);
-    aln = (int **) alloca(sizeof(int *) * 2);
+    aln = (int **) malloc(sizeof(int *) * 2);
     TEST(aln)
 	assert(aln);
     for (i = 0; i < 2; i++) {
-	aln[i] = (int *) alloca(sizeof(int) * (lena + lenb));
+	aln[i] = (int *) malloc(sizeof(int) * (lena + lenb));
 	TEST(aln[i])
 	    assert(aln[i]);
     }
@@ -513,10 +512,10 @@ int	m, n, la, lb;
 {*/
     int i, j;			/*, k, na, nb, minlen;*/
     float **smn, path_score;
-    smn = (float **) alloca(sizeof(float *) * (lb + 2));
+    smn = (float **) malloc(sizeof(float *) * (lb + 2));
     assert(smn);
     for (i = 0; i < lb + 2; i++) {
-	smn[i] = (float *) alloca(sizeof(float) * (la + 2));
+	smn[i] = (float *) malloc(sizeof(float) * (la + 2));
 	assert(smn[i]);
 	for (j = 0; j < la + 2; j++)
 	    smn[i][j] = 0.0;
@@ -598,10 +597,10 @@ int	na, nb, m, n;
 {*/
     int **aln, len, i;
     float **s, score = 0.0;
-    aln = (int **) alloca(sizeof(int *) * 2);
+    aln = (int **) malloc(sizeof(int *) * 2);
     TEST(aln)
 	for (i = 0; i < 2; i++) {
-	aln[i] = (int *) alloca(sizeof(int) * (na + nb));
+	aln[i] = (int *) malloc(sizeof(int) * (na + nb));
 	TEST(aln[i])
     }
     if (m > 1 && n > 1) {
@@ -612,7 +611,7 @@ int	na, nb, m, n;
 	}
     }
     if (m < nb && n < na) {
-	s = (float **) alloca(sizeof(float *) * (nb + 2));
+	s = (float **) malloc(sizeof(float *) * (nb + 2));
 	TEST(s)
 	    for (i = n; i < nb + 2; i++)
 	    s[i - n] = smn[i] + m;
@@ -639,10 +638,10 @@ int	na, nb, *length;
     int maxi = 0;
     int maxj = 0;
     int naa = na + 2, nbb = nb + 2, now;
-    mat = (float **) alloca(sizeof(float *) * 2);
+    mat = (float **) malloc(sizeof(float *) * 2);
     TEST(mat)
 	for (i = 0; i < 2; i++) {
-	mat[i] = (float *) alloca(sizeof(float) * naa);
+	mat[i] = (float *) malloc(sizeof(float) * naa);
 	TEST(mat[i])
     }
 	/* JK debug Fri Nov  7 17:59:47 GMT 2008 : initialise matrix */
@@ -650,10 +649,10 @@ int	na, nb, *length;
 		for (j = 0; j < naa; ++ j)
 			mat[i][j] = 0.;
 
-    ptr = (int **) alloca(sizeof(int *) * nbb);
+    ptr = (int **) malloc(sizeof(int *) * nbb);
     TEST(ptr)
 	for (i = 0; i < nbb; i++) {
-	ptr[i] = (int *) alloca(sizeof(int) * naa);
+	ptr[i] = (int *) malloc(sizeof(int) * naa);
 	TEST(ptr[i])
     }
 	/* JK debug Fri Nov  7 17:59:47 GMT 2008 : initialise matrix */
@@ -661,9 +660,9 @@ int	na, nb, *length;
 		for (j = 0; j < naa; ++ j)
 			ptr[i][j] = 0;
 
-    colmax = (float *) alloca(sizeof(float) * (naa));
+    colmax = (float *) malloc(sizeof(float) * (naa));
     TEST(colmax)
-	maxcol = (int *) alloca(sizeof(int) * (naa));
+	maxcol = (int *) malloc(sizeof(int) * (naa));
     TEST(maxcol)
 	for (i = 0; i < naa; i++) {
 	maxcol[i] = 0;
@@ -1208,25 +1207,25 @@ int	**aln, len;
     float cut, rms, pct, suw, sud, sum = 0.0;
     float sumrms = 0.0;
     int i, j, n, id;
-    sa = (float *) alloca(sizeof(float) * (na + 2));
+    sa = (float *) malloc(sizeof(float) * (na + 2));
     assert(sa);
     for (i = 1; i <= na; i++)
 	sa[i] = 0.0;
-    sb = (float *) alloca(sizeof(float) * (nb + 2));
+    sb = (float *) malloc(sizeof(float) * (nb + 2));
     assert(sb);
     for (i = 1; i <= nb; i++)
 	sb[i] = 0.0;
-    mm = (int *) alloca(sizeof(int) * len);
+    mm = (int *) malloc(sizeof(int) * len);
     assert(mm);
-    w = (float *) alloca(sizeof(float) * len);
+    w = (float *) malloc(sizeof(float) * len);
     assert(w);
-    ww = (double *) alloca(sizeof(double) * len);
+    ww = (double *) malloc(sizeof(double) * len);
     assert(ww);
-    va = (double **) alloca(sizeof(double *) * len);
+    va = (double **) malloc(sizeof(double *) * len);
     assert(va);
-    vb = (double **) alloca(sizeof(double *) * len);
+    vb = (double **) malloc(sizeof(double *) * len);
     assert(vb);
-    axis = (Vec *) alloca(sizeof(Vec) * (len + 1));
+    axis = (Vec *) malloc(sizeof(Vec) * (len + 1));
     assert(axis);
     id = 0;
     for (i = len; i > 0; i--) {
@@ -1248,12 +1247,12 @@ int	**aln, len;
 	sum += s;
 	printf("%c%c%c %4d %5.1f%4d %c%c%c\n",
 	       aa2, aa1, ra, a, s, b, rb, ab1, ab2);
-	va[h] = (double *) alloca(sizeof(double) * 3);
+	va[h] = (double *) malloc(sizeof(double) * 3);
 	assert(va[h]);
 	va[h][0] = seqa->ca[a].x;
 	va[h][1] = seqa->ca[a].y;
 	va[h][2] = seqa->ca[a].z;
-	vb[h] = (double *) alloca(sizeof(double) * 3);
+	vb[h] = (double *) malloc(sizeof(double) * 3);
 	assert(vb[h]);
 	vb[h][0] = seqb->ca[b].x;
 	vb[h][1] = seqb->ca[b].y;
@@ -1271,9 +1270,9 @@ int	**aln, len;
     }
     rot = alloc_sqmat(3);
     assert(rot);
-    ac = (double *) alloca(sizeof(double) * 3);
+    ac = (double *) malloc(sizeof(double) * 3);
     assert(ac);
-    bc = (double *) alloca(sizeof(double) * 3);
+    bc = (double *) malloc(sizeof(double) * 3);
     assert(bc);
     rms = supermac(ww, va, vb, len, ac, bc, rot);
     acnt.x = ac[0];
@@ -1321,11 +1320,11 @@ int	**aln, len;
                         	n, n, axis[i].x, axis[i].y, axis[i].z, w[i]);
 		}
                 fprintf(axs,"TER\n");
-                mom = (float**)alloca(sizeof(float*)*4);
-                vec = (float**)alloca(sizeof(float*)*4);
+                mom = (float**)malloc(sizeof(float*)*4);
+                vec = (float**)malloc(sizeof(float*)*4);
         	for (i=0; i<4; i++) {
-                	mom[i] = (float*)alloca(sizeof(float)*4);
-                	vec[i] = (float*)alloca(sizeof(float)*4);
+                	mom[i] = (float*)malloc(sizeof(float)*4);
+                	vec[i] = (float*)malloc(sizeof(float)*4);
 		}
 		moment(mom,axis,w,len);
 		eigen(mom,3,val,vec);

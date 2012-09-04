@@ -3,6 +3,10 @@ ChangeLog of program SAP
 (C) 2008-2012 Jens Kleinjung
 ================================================================================
 
+- 1.1.3
+Tue Sep  4 16:08:49 BST 2012
+	Replaced 'alloca' with 'malloc'.
+
 - 1.1.2
 Mon Jun 18 18:17:44 BST 2012
 	Removed obsolete 'malloc.h' include. Using 'stdlib.h' instead.
