@@ -22,9 +22,8 @@ The latex documentation is completed by executing 'make pdf' in the
 
 <one2one> is an optional integer value added to the diagonal; any negative value selects the default value of 1000.
 
-
-## Server
-SAP: http://mathbio.crick.ac.uk/wiki/SAP
+## Web Server
+http://mathbio.crick.ac.uk/wiki/SAP
 
 ## Authorship
 (C) 1999 W.R. Taylor (program author)
