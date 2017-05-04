@@ -20,7 +20,7 @@ The latex documentation is completed by executing 'make pdf' in the
     sap <PDB_1> <PDB_2>
     sap <PDB_1> <PDB_2> <one2one>
 
-<one2one> is an optional integer value added to the diagonal; any negative value selects the default value of 1000.
+'one2one' is an optional integer value added to the diagonal; any negative value selects the default value of 1000.
 
 ## Web Server
 http://mathbio.crick.ac.uk/wiki/SAP
