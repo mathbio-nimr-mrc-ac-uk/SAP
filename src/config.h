@@ -52,7 +52,7 @@
 #define PACKAGE "sap"
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "jkleinj@gmail.com"
+#define PACKAGE_BUGREPORT "jens.kleinjung@crick.ac.uk"
 
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "sap"
