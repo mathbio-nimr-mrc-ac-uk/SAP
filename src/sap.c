@@ -30,6 +30,12 @@ int seqmat[NACID][NACID];
 
 char pdbcode[55];
 
+/* JK */
+char inFileName1[255];
+char inFileName2[255];
+char outFileName1[255];
+char outFileName2[255];
+
 int main(argc, argv)
 int argc;
 char *argv[];
@@ -57,6 +63,12 @@ char *argv[];
 	strcpy(file1, argv[1]);
 	strcpy(file2, argv[2]);
     }
+	/* JK */
+	strcpy(inFileName1, file1);
+	strcpy(inFileName2, file2);
+	snprintf(outFileName1, sizeof outFileName1, "%s%s%s%s", file1, "_", file2, ".pdb");
+	snprintf(outFileName2, sizeof outFileName2, "%s%s%s%s", file1, "_", file2, ".rms");
+
     strcpy(pdbcode, argv[2]);
     Ps(file1) NL prot1 = get_pdb(file1, 1, 1);
     Ps(prot1->Compound) NL cones(prot1);
@@ -1364,7 +1376,7 @@ int	**aln, len;
 	     pdbcode, rms, n, sum, pct);
 	cut *= 0.5;
     }
-    out = fopen("plot.rms", "w");
+    out = fopen(outFileName2, "w");
     sort(0, w, 0, mm, len, 1);
     sumrms = 0.0;
     for (i = 5; i < len; i++) {
@@ -1401,7 +1413,7 @@ int	**aln, len;
     char aa3[80], aaa[4];
     strcpy(aa3,
 	   "ALAASXCYSASPGLUPHEGLYHISILEACELYSLEUMETASNPCAPROGLNARGSERTHRUNKVALTRPXXXTYRGLX");
-    out = fopen("super.pdb", "w");
+    out = fopen(outFileName1, "w");
     lena = seqa->len;
     for (i = 1; i <= lena; i++) {
 	strncpy(aaa, aa3 + 3 * (seqa->res[i] - 'A'), 3);
