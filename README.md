@@ -26,10 +26,10 @@ The latex documentation is completed by executing 'make pdf' in the
 http://mathbio.crick.ac.uk/wiki/SAP
 
 ## Authorship
-(C) 1999 W.R. Taylor (program author)
-(C) 2007 Alessandro Pandini : SAP web server
-(C) 2007 Jens Kleinjung : code release
-(C) 2008 Siv Hollup : code update to ANSI C standard
+* (C) 1999 W.R. Taylor (program author)
+* (C) 2007 Alessandro Pandini : SAP web server
+* (C) 2007 Jens Kleinjung : code release
+* (C) 2008 Siv Hollup : code update to ANSI C standard
 
 ## Availability
 The program is made available under the GNU Public License for academic
